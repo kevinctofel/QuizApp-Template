@@ -105,7 +105,7 @@ function displayMainQuestionContainerUI() {
         <div id="wrapperQuestion">
           <legend> ${isCurrentQuestion.question}</legend>
           <div id="options">
-            ${displayOptionAnswersUI().join('')}
+            ${displayOptionAnswersUI().join('')};
           </div>
           <input type="submit" id="submit-btn" value="submit">
         </div>
@@ -121,6 +121,13 @@ function displayQuesAndScoreUI() {
 	return `
       <p class="alignleft">Question ${store.questionNumber + 1}/${store.questions.length}</p>
       <p class="alignright">Score: ${store.score}/${store.questions.length}</p>`;
+}
+
+function submitAndCheckAnswer() {
+	$('input[type=submit]').on('click', function (e) {
+		e.preventDefault();
+		console.log($('input[name=options]:checked').val());
+	});
 }
 
 /* -------------------------------------------------------------- */
@@ -142,6 +149,9 @@ function renderMain() {
 		store.questionNumber < store.questions.length ?
 		$('main').html(displayMainQuestionContainerUI()) :
 		$('main').html(displayFinalResultUI());
+
+	submitAndCheckAnswer();
+
 }
 
 /* -------------------------------------------------------------- */
