@@ -59,11 +59,6 @@ const store = {
 	score: 0
 };
 
-// Event listeners 
-
-// const startButton = document.getElementById('#start-btn');
-// startButton.addEventListener('click', handleStartClick);
-
 
 /* -------------------------------------------------------------- */
 /********** TEMPLATE GENERATION FUNCTIONS **********/
@@ -71,6 +66,7 @@ const store = {
 /* -------------------------------------------------------------- */
 
 /* -- Display UI : Start Quiz -- */
+// Added button onclick to handle quiz start
 function displayStartUI() {
 	return `
     <div class="card js-startDisplay">
@@ -122,7 +118,7 @@ function displayMainQuestionContainerUI() {
 // what other functions are needed here?
 
 function displayQuesAndScoreUI(){
-	
+	return (`Question ${store.questionNumber + 1}/${store.questions.length} Score: ${store.score}/${store.questions.length}`);
 }
 
 /* -------------------------------------------------------------- */
@@ -143,7 +139,7 @@ function renderMain() {
 	store.questionNumber >= 0 &&
 		store.questionNumber < store.questions.length ?
 		$('main').html(displayMainQuestionContainerUI()) :
-		$('main').html(displayFinalResultUI())
+		$('main').html(displayFinalResultUI());
 }
 
 /* -------------------------------------------------------------- */
@@ -155,9 +151,6 @@ function renderMain() {
 // what functions do you need here you think?
 
 function handleStartClick() {
-	console.log('ran handleStartClick');
-	event.preventDefault();
-	console.log("clicked");
 	store.quizStarted = true;
 	renderMain();
 }
