@@ -98,8 +98,13 @@ input[type="radio"] {
 /* ------------------------------------- */
 /* Questiosn and Answers */
 /* ------------------------------------- */
-#questionNum, #score {
-  text-transform: uppercase;
+
+/* Added two align classes to handle question on left and score on right */
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
 }
 
 #wrapperQuestion {

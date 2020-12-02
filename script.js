@@ -117,8 +117,10 @@ function displayMainQuestionContainerUI() {
 
 // what other functions are needed here?
 
-function displayQuesAndScoreUI(){
-	return (`Question ${store.questionNumber + 1}/${store.questions.length} Score: ${store.score}/${store.questions.length}`);
+function displayQuesAndScoreUI() {
+	return `
+      <p class="alignleft">Question ${store.questionNumber + 1}/${store.questions.length}</p>
+      <p class="alignright">Score: ${store.score}/${store.questions.length}</p>`;
 }
 
 /* -------------------------------------------------------------- */
