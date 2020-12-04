@@ -101,32 +101,53 @@ function displayMainQuestionContainerUI() {
 	return `
     <form id="js-mainForm">
       <fieldset class="card">
-        <div>${displayQuesAndScoreUI()}</div>
+        <div id = "metrics">${displayQuesAndScoreUI()}</div>
         <div id="wrapperQuestion">
           <legend> ${isCurrentQuestion.question}</legend>
           <div id="options">
-            ${displayOptionAnswersUI().join('')};
+            ${displayOptionAnswersUI().join('')}
           </div>
           <input type="submit" id="submit-btn" value="submit">
         </div>
       </fieldset>
     </form >
-  `;
+  `
+}
+
+function displayAnswerCorrect() {
+	console.log("card correct ran");
+	// $('main').addClass('cardCorrect');
+	$('#js-mainForm').addClass('cardCorrect)');
+	$('.card').addClass('cardCorrect');
+	store.score = store.score + 1;
+	$('#score').html(`Score: ${store.score}/${store.questions.length}</p>`);
+
+	return $('#wrapperQuestion').html(`<h1>w00t! That is correct!</h1>`)
 }
 
 
 // what other functions are needed here?
 
+function nextButton() {
+	return $('#js-mainForm').html(`<div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
+}
+
 function displayQuesAndScoreUI() {
 	return `
       <p class="alignleft">Question ${store.questionNumber + 1}/${store.questions.length}</p>
-      <p class="alignright">Score: ${store.score}/${store.questions.length}</p>`;
+      <p id="score" class="alignright">Score: ${store.score}/${store.questions.length}</p>`;
 }
 
 function submitAndCheckAnswer() {
 	$('input[type=submit]').on('click', function (e) {
 		e.preventDefault();
-		console.log($('input[name=options]:checked').val());
+		let userAnswer = ($('input[name=options]:checked').val());
+		console.log(userAnswer);
+		// logic to check answer TBD
+		displayAnswerCorrect();
+		// nextButton();
+		// renderMain();
+
 	});
 }
 
@@ -151,6 +172,8 @@ function renderMain() {
 		$('main').html(displayFinalResultUI());
 
 	submitAndCheckAnswer();
+
+
 
 }
 
