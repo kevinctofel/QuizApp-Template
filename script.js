@@ -120,17 +120,15 @@ function displayAnswerCorrect() {
 	$('#js-mainForm').addClass('cardCorrect)');
 	$('.card').addClass('cardCorrect');
 	store.score = store.score + 1;
+	store.questionNumber = store.questionNumber + 1;
 	$('#score').html(`Score: ${store.score}/${store.questions.length}</p>`);
 
-	return $('#wrapperQuestion').html(`<h1>w00t! That is correct!</h1>`)
+	return $('#wrapperQuestion').html(`<h1>w00t! That is correct!</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
 }
 
 
 // what other functions are needed here?
 
-function nextButton() {
-	return $('#js-mainForm').html(`<div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
-}
 
 function displayQuesAndScoreUI() {
 	return `
