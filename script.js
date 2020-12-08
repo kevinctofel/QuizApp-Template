@@ -1,57 +1,61 @@
 /*
  * Example store structure
  */
+
+/* Note: All questions from 
+ * https://www.thisdayinmusic.com/quizzes/the-very-hard-beatles-quiz/
+ */
 const store = {
 	questions: [
 		{
-			question: 'Ancient Egyptians hung what animal above their doorway, which was believed to ward off disease?',
+			question: 'Which is the only day of the week not mentioned in the Beatles song “Lady Madonna"?',
 			answers: [
-				'Weasel',
-				'Bat',
-				'Ibis',
-				'Kingfisher'
+				'Saturday',
+				'Tuesday',
+				'Thursday',
+				'Monday'
 			],
-			correctAnswer: 'Bat'
+			correctAnswer: 'Saturday'
 		},
 		{
-			question: 'If the history of life on Earth were put to a 24-hr clock, how long would have humans been here shaping this world?',
+			question: 'Who is the only Beatle to have published an autobiography?',
 			answers: [
-				'Seconds',
-				'Mins',
-				'Hours',
-				'Day'
+				'Paul McCartney',
+				'John Lennon',
+				'George Harrison',
+				'Ringo Starr'
 			],
-			correctAnswer: 'Seconds'
+			correctAnswer: 'George Harrison'
 		},
 		{
-			question: 'Who first described the golden ratio?',
+			question: 'Who was the only Beatle without a beard on the cover of Abbey Road?',
 			answers: [
-				'Aristotle',
-				'Isaac Newton',
-				'Da Vinci',
-				'Euclid'
+				'Ringo Starr',
+				'John Lennon',
+				'Paul McCartney',
+				'George Harrison'
 			],
-			correctAnswer: 'Euclid'
+			correctAnswer: 'Paul McCartney'
 		},
 		{
-			question: 'Which animal was used to model the fastest bullet train?',
+			question: 'How many times did The Beatles play at The Cavern Club in Liverpool?',
 			answers: [
-				'Peregrine Falcon',
-				'Kingfisher',
-				'Sailfish',
-				'Tiger beetle'
+				'292',
+				'178',
+				'75',
+				'0'
 			],
-			correctAnswer: 'Kingfisher'
+			correctAnswer: '292'
 		},
 		{
-			question: 'Pressure sensors underwater that help detect Tsunami waves are based on which animal?',
+			question: 'What is the Beatles most successful single, with world-wide sales of over 12 million?',
 			answers: [
-				'Orcas',
-				'Whale shark',
-				'Beluga whale',
-				'Dolphins'
+				'She Loves You',
+				'Hey Jude',
+				'I Want to Hold Your Hand',
+				'Twist and Shout'
 			],
-			correctAnswer: 'Dolphins'
+			correctAnswer: 'I Want to Hold Your Hand'
 		}
 	],
 	quizStarted: false,
@@ -70,8 +74,8 @@ const store = {
 function displayStartUI() {
 	return `
     <div class="card js-startDisplay">
-      <h2>Test your knowledge of Biomimicry</h2>
-      <button type="button" id="start-btn" value="start" onclick="handleStartClick()">Start</button>
+      <h2>Test your knowledge of The Beatles</h2>
+      <button type="button" id="start-btn" value="start" onclick="handleStartClick()">Hit it!</button>
     </div>`;
 }
 
@@ -123,7 +127,18 @@ function displayAnswerCorrect() {
 	store.questionNumber = store.questionNumber + 1;
 	$('#score').html(`Score: ${store.score}/${store.questions.length}</p>`);
 
-	return $('#wrapperQuestion').html(`<h1>w00t! That is correct!</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
+	return $('#wrapperQuestion').html(`<h1>Groovy! That is correct!</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
+}
+
+function displayAnswerIncorrect() {
+	console.log("card incorrect ran");
+	// $('main').addClass('cardCorrect');
+	$('#js-mainForm').addClass('cardIncorrect)');
+	$('.card').addClass('cardIncorrect');
+	store.questionNumber = store.questionNumber + 1;
+	$('#score').html(`Score: ${store.score}/${store.questions.length}</p>`);
+
+	return $('#wrapperQuestion').html(`<h1>Bummer, that's not right. The correct answer is ${store.questions[store.questionNumber].correctAnswer}</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
 }
 
 
@@ -142,9 +157,9 @@ function submitAndCheckAnswer() {
 		let userAnswer = ($('input[name=options]:checked').val());
 		console.log(userAnswer);
 		// logic to check answer TBD
+		// If correct call daC, if not call daI
 		displayAnswerCorrect();
-		// nextButton();
-		// renderMain();
+
 
 	});
 }
