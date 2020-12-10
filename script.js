@@ -3,7 +3,7 @@
  */
 
 /* Note: All questions from 
- * https://www.thisdayinmusic.com/quizzes/the-very-hard-beatles-quiz/
+ * https://www.thisdayinmusic./quizzes/the-very-hard-beatles-quiz/
  */
 const store = {
 	questions: [
@@ -127,7 +127,7 @@ function displayAnswerCorrect() {
 	store.questionNumber = store.questionNumber + 1;
 	$('#score').html(`Score: ${store.score}/${store.questions.length}</p>`);
 
-	return $('#wrapperQuestion').html(`<h1>Groovy! That is correct!</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
+	return $('#wrapperQuestion').html(`<h1>Groovy!</br> That is correct!</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
 }
 
 function displayAnswerIncorrect() {
@@ -138,7 +138,7 @@ function displayAnswerIncorrect() {
 	store.questionNumber = store.questionNumber + 1;
 	$('#score').html(`Score: ${store.score}/${store.questions.length}</p>`);
 
-	return $('#wrapperQuestion').html(`<h1>Bummer, that's not right. The correct answer is ${store.questions[store.questionNumber].correctAnswer}</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
+	return $('#wrapperQuestion').html(`<h1>Bummer, that's not right. The correct answer is ${store[questionNumber].correctAnswer}</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
 }
 
 
@@ -156,11 +156,14 @@ function submitAndCheckAnswer() {
 		e.preventDefault();
 		let userAnswer = ($('input[name=options]:checked').val());
 		console.log(userAnswer);
+		console.log(store.questions[store.questionNumber].correctAnswer);
 		// logic to check answer TBD
 		// If correct call daC, if not call daI
-		displayAnswerCorrect();
-
-
+		if (userAnswer == store.questions[store.questionNumber].correctAnswer) {
+			displayAnswerCorrect();
+		}
+		else
+			displayAnswerIncorrect();
 	});
 }
 
