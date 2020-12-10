@@ -130,7 +130,7 @@ function displayAnswerCorrect() {
 	return $('#wrapperQuestion').html(`<h1>Groovy!</br> That is correct!</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
 }
 
-function displayAnswerIncorrect() {
+function displayAnswerIncorrect(correct) {
 	console.log("card incorrect ran");
 	// $('main').addClass('cardCorrect');
 	$('#js-mainForm').addClass('cardIncorrect)');
@@ -138,7 +138,7 @@ function displayAnswerIncorrect() {
 	store.questionNumber = store.questionNumber + 1;
 	$('#score').html(`Score: ${store.score}/${store.questions.length}</p>`);
 
-	return $('#wrapperQuestion').html(`<h1>Bummer, that's not right. The correct answer is ${store[questionNumber].correctAnswer}</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
+	return $('#wrapperQuestion').html(`<h1>Bummer!</br> The correct answer is ${correct}</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
 }
 
 
@@ -163,7 +163,7 @@ function submitAndCheckAnswer() {
 			displayAnswerCorrect();
 		}
 		else
-			displayAnswerIncorrect();
+			displayAnswerIncorrect(store.questions[store.questionNumber].correctAnswer);
 	});
 }
 
