@@ -141,6 +141,24 @@ function displayAnswerIncorrect(correct) {
 	return $('#wrapperQuestion').html(`<h1>Bummer!</br> The correct answer is ${correct}</h1><div id="next"><button type="button" id="next-btn" value="start" onclick="renderMain()">Next</button></div>`)
 }
 
+function displayFinalResultUI() {
+	$('#js-mainForm').addClass('cardCorrect)');
+	$('.card').addClass('cardCorrect');
+	return `
+    <div class="card js-startDisplay">
+      <h2>Your final score is</br> ${store.score} out of ${store.questionNumber}.</h2>
+	  <h3>Do you want to try again?</h3>
+      <button type="button" id="start-btn" value="start" onclick="resetQuiz()">Let's do it!</button>
+    </div>`;
+}
+
+function resetQuiz() {
+	store.score = 0;
+	store.questionNumber = 0;
+	store.quizStarted = false;
+	handleQuizApp();
+}
+
 
 // what other functions are needed here?
 
