@@ -86,9 +86,7 @@ function displayOptionAnswersUI() {
 
 	getAnswers.forEach((answer, index) => {
 		answersArray.push(`
-    <div class="answerContainer-${index}">
-    
-    <input type="radio" name="options" id="selectedAnswer${index + 1}" value= "${answer}" required>
+    <div class="answerContainer-${index}"><input type="radio" name="options" id="selectedAnswer${index + 1}" value= "${answer}" required>
     <label for="selectedAnswer${index + 1}" class="label">${answer}</label>
     
   </div>
