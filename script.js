@@ -117,8 +117,7 @@ function displayMainQuestionContainerUI() {
 }
 
 function displayAnswerCorrect() {
-	console.log("card correct ran");
-	// $('main').addClass('cardCorrect');
+
 	$('#js-mainForm').addClass('cardCorrect)');
 	$('.card').addClass('cardCorrect');
 	store.score = store.score + 1;
@@ -129,7 +128,7 @@ function displayAnswerCorrect() {
 }
 
 function displayAnswerIncorrect(correct) {
-	console.log("card incorrect ran");
+
 	// $('main').addClass('cardCorrect');
 	$('#js-mainForm').addClass('cardIncorrect)');
 	$('.card').addClass('cardIncorrect');
@@ -171,10 +170,6 @@ function submitAndCheckAnswer() {
 	$('input[type=submit]').on('click', function (e) {
 		e.preventDefault();
 		let userAnswer = ($('input[name=options]:checked').val());
-		console.log(userAnswer);
-		console.log(store.questions[store.questionNumber].correctAnswer);
-		// logic to check answer TBD
-		// If correct call daC, if not call daI
 		if (userAnswer == store.questions[store.questionNumber].correctAnswer) {
 			displayAnswerCorrect();
 		}
@@ -191,8 +186,6 @@ function submitAndCheckAnswer() {
 
 
 function renderMain() {
-
-	console.log("ran renderMain");
 
 	if (store.quizStarted === false) {
 		return $('main').html(displayStartUI());
